@@ -15,7 +15,7 @@ module NMax
         end
       end
 
-      class Num
+      class Lim
 
         class Zero < ArgumentError
 
@@ -29,6 +29,17 @@ module NMax
         class Negative < ArgumentError
 
           MESSAGE = "Given argument should be more than 0."
+
+          def initialize
+            super(MESSAGE)
+          end
+        end
+      end
+
+      class Num
+        class TooLongNumber < ArgumentError
+
+          MESSAGE = "Number don't have to be longer than 1000 signs"
 
           def initialize
             super(MESSAGE)

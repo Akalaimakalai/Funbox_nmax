@@ -1,6 +1,6 @@
 RSpec.describe NMax::Application do
 
-  describe "#initialize(text, number)" do
+  describe "#initialize(text, limit)" do
     let(:app) { NMax::Application.new('TestText', "1") }
 
     it 'sets text into @text' do
@@ -12,25 +12,25 @@ RSpec.describe NMax::Application do
         expect(app).to be_is_a(NMax::Application)
       end
 
-      it 'sets number into @number' do
-        expect(app.number).to eq '1'
+      it 'sets limit into @limit' do
+        expect(app.limit).to eq '1'
       end
     end
 
-    context 'with invalid number' do
-      context 'number is not a string' do
+    context 'with invalid limit' do
+      context 'limit is not a string' do
         it 'does not create new instance' do
           expect { NMax::Application.new('TestText', {}) }.to raise_error(NMax::Application::Errors::Str::InvalidClass)
         end
       end
 
-      context 'number is zero' do
+      context 'limit is zero' do
         it 'does not create new instance' do
           expect { NMax::Application.new('TestText', '0') }.to raise_error(NMax::Application::Errors::Num::Zero)
         end
       end
 
-      context 'number is subzero' do
+      context 'limit is subzero' do
         it 'does not create new instance' do
           expect { NMax::Application.new('TestText', '-1') }.to raise_error(NMax::Application::Errors::Num::Negative)
         end

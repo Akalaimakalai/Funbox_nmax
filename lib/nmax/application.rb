@@ -1,20 +1,22 @@
 module NMax
   class Application
     require_relative 'find_numbers_service'
-    require_relative 'modules/errors'
+    require_relative 'modules/errors/lim'
+    require_relative 'modules/errors/str'
 
     attr_reader :text, :limit
 
     def initialize(text, limit)
-      @text = text
       validate_limit(limit)
+
+      @text = text
       @limit = limit.to_i
     end
 
     def call
       @service = NMax::FindNumbersService.new
       response = @service.find_in(@text)
-      puts response.sort.reverse[0..@limit]
+      response.sort.reverse[0...@limit]
     end
 
     private

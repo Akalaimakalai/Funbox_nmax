@@ -1,10 +1,10 @@
 module NMax
   class FindNumbersService
-    require_relative 'modules/errors'
+    require_relative 'modules/errors/num'
 
-    ASCII_CODE_0 = 48.freeze
+    ASCII_CODE_0 = 48
 
-    ASCII_CODE_9 = 57.freeze
+    ASCII_CODE_9 = 57
 
     ASCII_CODES = (ASCII_CODE_0..ASCII_CODE_9).freeze
 
@@ -26,6 +26,7 @@ module NMax
 
     def add_sign(byte)
       validate_number_length
+
       @number.setbyte(@counter, byte)
       @counter += 1
     end

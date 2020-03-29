@@ -13,7 +13,7 @@ RSpec.describe NMax::Application do
       end
 
       it 'sets limit into @limit' do
-        expect(app.limit).to eq '1'
+        expect(app.limit).to eq 1
       end
     end
 
@@ -26,13 +26,13 @@ RSpec.describe NMax::Application do
 
       context 'limit is zero' do
         it 'does not create new instance' do
-          expect { NMax::Application.new('TestText', '0') }.to raise_error(NMax::Application::Errors::Num::Zero)
+          expect { NMax::Application.new('TestText', '0') }.to raise_error(NMax::Application::Errors::Lim::Zero)
         end
       end
 
       context 'limit is subzero' do
         it 'does not create new instance' do
-          expect { NMax::Application.new('TestText', '-1') }.to raise_error(NMax::Application::Errors::Num::Negative)
+          expect { NMax::Application.new('TestText', '-1') }.to raise_error(NMax::Application::Errors::Lim::Negative)
         end
       end
     end

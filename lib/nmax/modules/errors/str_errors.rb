@@ -1,10 +1,7 @@
 module NMax
   class Application
-
     module Errors
-
       class Str
-
         class InvalidClass < ArgumentError
 
           MESSAGE = "Given argument is not a String."

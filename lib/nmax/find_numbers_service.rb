@@ -1,6 +1,6 @@
 module NMax
   class FindNumbersService
-    require_relative 'modules/errors/num'
+    require_relative 'modules/errors/num_errors'
 
     ASCII_CODE_0 = 48
 

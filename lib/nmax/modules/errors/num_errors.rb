@@ -1,8 +1,6 @@
 module NMax
   class Application
-
     module Errors
-
       class Num
         class TooLongNumber < ArgumentError
 

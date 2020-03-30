@@ -1,8 +1,6 @@
 module NMax
   class Application
-
     module Errors
-
       class Lim
 
         class Zero < ArgumentError
@@ -23,7 +21,6 @@ module NMax
           end
         end
       end
-
     end
   end
 end

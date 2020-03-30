@@ -21,7 +21,7 @@ RSpec.describe NMax::Application do
     context 'with invalid text' do
       context 'text is not from a stream' do
         it 'raises Str::InvalidClass error' do
-          expect { NMax::Application.new('invalid text', '1') }.to raise_error(NMax::Application::Errors::IO::InvalidClass)
+          expect { NMax::Application.new('invalid text', '1') }.to raise_error(NMax::IOValidate::Errors::IO::InvalidClass)
         end
       end
     end

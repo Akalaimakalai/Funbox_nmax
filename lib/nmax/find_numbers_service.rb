@@ -1,7 +1,9 @@
 module NMax
   class FindNumbersService
     require_relative 'modules/errors/num_errors'
-    require_relative 'modules/errors/io_errors'
+    require_relative 'modules/io_validate'
+
+    include IOValidate
 
     ASCII_CODE_0 = 48
 
@@ -15,7 +17,7 @@ module NMax
     end
 
     def find_in(text)
-      validate_text(text)
+      validate_io(text)
 
       loop do
         sign = text.getbyte
@@ -52,10 +54,6 @@ module NMax
 
     def validate_number_length
       raise Errors::Num::TooLongNumber if @counter >= 1000
-    end
-
-    def validate_text(text)
-      raise Errors::IO::InvalidClass unless text.is_a?(IO)
     end
   end
 end

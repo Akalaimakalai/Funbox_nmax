@@ -21,26 +21,36 @@ RSpec.describe NMax::FindNumbersService do
   describe "#find_in(text)" do
     let(:text) { File.open('spec/support/test_file.txt') }
 
-    context 'text with correct numbers' do
-
-      it 'returns correct array' do
-        expect(service.find_in(text)).to eq [111, 22, 3, 0, 34, 21, 42]
+    describe 'with invalid text' do
+      context 'text is not from a stream' do
+        it 'raises Str::InvalidClass error' do
+          expect { service.find_in('InvalidText') }.to raise_error(NMax::IOValidate::Errors::IO::InvalidClass)
+        end
       end
     end
 
-    context 'text with number longer than 1000 signs' do
+    describe 'with valid text' do
+      context 'text with correct numbers' do
 
-      it 'raises Num::TooLongNumber error' do
-        service.instance_variable_set(:@counter, 1000)
-        expect{ service.find_in(text) }.to raise_error(NMax::FindNumbersService::Errors::Num::TooLongNumber)
+        it 'returns correct array' do
+          expect(service.find_in(text)).to eq [111, 22, 3, 0, 34, 21, 42]
+        end
       end
-    end
 
-    context 'text without numbers' do
-      let(:text) { File.open('spec/support/no_numbers.txt') }
+      context 'text with number longer than 1000 signs' do
 
-      it 'returns empty array' do
-        expect(service.find_in(text)).to eq []
+        it 'raises Num::TooLongNumber error' do
+          service.instance_variable_set(:@counter, 1000)
+          expect{ service.find_in(text) }.to raise_error(NMax::FindNumbersService::Errors::Num::TooLongNumber)
+        end
+      end
+
+      context 'text without numbers' do
+        let(:text) { File.open('spec/support/no_numbers.txt') }
+
+        it 'returns empty array' do
+          expect(service.find_in(text)).to eq []
+        end
       end
     end
   end

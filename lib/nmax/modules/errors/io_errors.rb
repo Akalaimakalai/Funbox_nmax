@@ -1,5 +1,5 @@
 module NMax
-  class Application
+  module IOValidate
     module Errors
       class IO
         class InvalidClass < ArgumentError

@@ -23,7 +23,7 @@ RSpec.describe NMax::FindNumbersService do
 
     describe 'with invalid text' do
       context 'text is not from a stream' do
-        it 'raises Str::InvalidClass error' do
+        it 'raises IO::InvalidClass error' do
           expect { service.find_in('InvalidText') }.to raise_error(NMax::IOValidate::Errors::IO::InvalidClass)
         end
       end

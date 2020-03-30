@@ -1,5 +1,5 @@
 module NMax
-  class Application
+  class FindNumbersService
     module Errors
       class Num
         class TooLongNumber < ArgumentError

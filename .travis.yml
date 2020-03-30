@@ -1,0 +1,12 @@
+language: ruby
+
+rvm: 2.6.5
+
+branches:
+  only:
+    - master
+    - script_can_take_from_pipe
+
+script:
+  - bundle exec rspec
+  - gem build nmax.gemspec
